@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cox Ministries | Christian Ceremonies & Spiritual Support</title>
+  <style>
+    :root {
+      --cream: #f7f1e6;
+      --tan: #d6b27c;
+      --brown: #6a4a32;
+      --dark: #24331f;
+      --sage: #7f9568;
+      --moss: #4f6f46;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: #000;
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.72;
+      z-index: 0;
+    }
+
+    .hero {
+      max-width: 850px;
+      position: relative;
+      z-index: 2;
+      background: rgba(36, 51, 31, 0.48);
+      padding: 2rem;
+      border-radius: 28px;
+      backdrop-filter: blur(2px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      margin-bottom: 2rem;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--tan);
+      color: var(--dark);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    nav {
+      background: var(--dark);
+      color: white;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 4.5rem 1.4rem;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--brown);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+      max-width: 720px;
+      margin: auto;
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 1.6rem;
+      box-shadow: 0 12px 30px rgba(47, 36, 29, 0.09);
+      border: 1px solid rgba(107, 75, 53, 0.12);
+    }
+
+    .card h3 {
+      color: var(--brown);
+      margin-bottom: 0.6rem;
+      font-size: 1.35rem;
+    }
+
+    .about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-box {
+      background: var(--cream);
+      padding: 2rem;
+      border-radius: 26px;
+      border-left: 8px solid var(--sage);
+    }
+
+    .list {
+      margin-top: 1rem;
+      padding-left: 1.2rem;
+    }
+
+    .pricing {
+      background: #efe4d6;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      color: var(--brown);
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .contact {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .contact .section-title h2 {
+      color: var(--tan);
+    }
+
+    form {
+      max-width: 720px;
+      margin: auto;
+      display: grid;
+      gap: 1rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 14px;
+      border: none;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      min-height: 130px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    footer {
+      background: #1f1814;
+      color: white;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .notice {
+      max-width: 850px;
+      margin: 2rem auto 0;
+      font-size: 0.9rem;
+      opacity: 0.88;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(47, 36, 29, 0.09);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem;
+      color: white;
+      background: linear-gradient(transparent, rgba(36, 51, 31, 0.88));
+      font-weight: bold;
+      letter-spacing: 0.03em;
+    }
+
+    .gallery-item.featured {
+      grid-column: span 2;
+    }
+
+    .gallery-item.featured img {
+      height: 420px;
+    }
+
+    .photo-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      color: var(--brown);
+    }
+
+    .feature-photo {
+      width: 100%;
+      border-radius: 26px;
+      box-shadow: 0 14px 35px rgba(47, 36, 29, 0.16);
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-card {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(47, 36, 29, 0.09);
+      margin: 1.5rem 0;
+    }
+
+    .photo-caption {
+      text-align: center;
+      color: var(--brown);
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: bold;
+    }
+
+    .section-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      align-items: center;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 760px) {
+      nav a {
+        display: inline-block;
+        margin: 0.35rem 0.45rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item.featured {
+        grid-column: span 1;
+      }
+
+      .gallery-item img,
+      .gallery-item.featured img {
+        height: 260px;
+      }
+
+      .section-image-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="background:#4f6f46; color:white; text-align:center; padding:0.6rem; font-size:0.95rem;">
+    Now accepting weddings, ministry bookings, and private support requests in Missoula, Montana
+  </div>
+  <nav>
+    <a href="#services">Ministry Services</a>
+    <a href="#about">About</a>
+    <a href="#pricing">Starting Prices</a>
+    <a href="#booking">Book Now</a>
+    <a href="#payments">Payments</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <img class="hero-bg" src="1000021344.png" alt="Pastor Rick walking on the beach" />
+    <div class="hero">
+      <h1>Cox Ministries</h1>
+      <p>Christian ceremonies, compassionate guidance, recovery support, and prayer-centered ministry rooted in faith, grace, and real-life experience.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="#booking">Book Now</a>
+        <a class="btn btn-secondary" href="#services">View Services</a>
+        <a class="btn btn-secondary" href="sms:8309298912">Text Ricky for Faster Response</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="recovery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Recovery & Support</h2>
+        <p>Confidential • Judgment-Free • Faith-Centered Support</p>
+      </div>
+
+      <div class="section-image-grid">
+        <div class="photo-card">
+          <img class="feature-photo" src="1000021346.png" alt="Pastor Rick sitting on the beach in quiet reflection" />
+          <div class="photo-caption">A quiet place to breathe, talk, and begin again.</div>
+        </div>
+        <div>
+          <div class="card" style="padding:2rem; border-left:8px solid var(--moss);">
+            <p style="font-size:1.2rem; font-weight:bold;">Sometimes the first step is simply reaching out.</p>
+            <p>Recovery and support should feel safe, personal, and real. Pastor Rick offers steady encouragement, prayer, accountability, and conversations that meet people where they are.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:2rem; padding:2rem; border-left:8px solid var(--moss);">
+        <p style="font-size:1.2rem; font-weight:bold;">You don’t have to go through this alone.</p>
+        <p>If you’re in a hard place right now—struggling, overwhelmed, or just trying to hold it together—this is a safe place to reach out.</p>
+        <p>There’s no pressure, no judgment, and no expectations. Just real conversation, real faith, and someone willing to walk with you.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>One-on-One Support</h3>
+          <p>Private, faith-centered conversations for addiction, grief, loss, or life challenges. You can talk freely.</p>
+        </div>
+
+        <div class="card">
+          <h3>Recovery Mentorship</h3>
+          <p>Guidance for those in recovery and those stepping into helping others. Learn how to grow and give back.</p>
+        </div>
+
+        <div class="card">
+          <h3>Prayer & Accountability</h3>
+          <p>Ongoing support, check-ins, and prayer to help you stay grounded and moving forward.</p>
+        </div>
+
+        <div class="card">
+          <h3>Meet You Where You Are</h3>
+          <p>Park, outdoors, phone, or simple conversation—whatever helps you feel safe enough to open up.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:2rem;">
+        <p style="font-style:italic; margin-bottom:0.75rem;">You’re not here by accident. If you’re reading this, it may be time to reach out.</p>
+        <p style="font-size:1.1rem; margin-bottom:1rem;">Available now. You can text anytime.</p>
+        <a class="btn btn-primary" href="sms:8309298912">Text Ricky for Support</a>
+      </div>
+
+      <p class="notice">If you’re in immediate danger or need emergency help, please contact local emergency services. Otherwise, know that support is here—and you are not alone.</p>
+    </div>
+  </section>
+
+  <section id="counseling">
+    <div class="container">
+      <div class="section-title">
+        <h2>Counseling & Spiritual Guidance</h2>
+        <p style="font-weight:bold;">Private • Respectful • Faith-Centered Conversations</p>
+      </div>
+
+      <div class="section-image-grid">
+        <div class="photo-card">
+          <img class="feature-photo" src="1000021223.png" alt="Pastor Rick providing faith-based guidance to a couple" />
+          <div class="photo-caption">Real conversations. Real support. A safe place to be heard.</div>
+        </div>
+        <div>
+          <div class="card" style="border-left:8px solid var(--moss);">
+            <p style="font-size:1.2rem; font-weight:bold;">You don’t have to have it all figured out before you reach out.</p>
+            <p>Whether you’re carrying grief, conflict, addiction, or uncertainty, this is a place to start with honesty and without judgment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:2rem; border-left:8px solid var(--moss);">
+        <p style="font-size:1.3rem; font-weight:bold;">You don’t have to carry this alone.</p>
+        <p>If something in your life feels heavy right now—your marriage, your family, your past, or your thoughts—you don’t have to figure it out by yourself.</p>
+        <p>This is a safe place to talk. No pressure. No judgment. Just real support, grounded in faith and understanding.</p>
+        <p style="margin-top:1rem;"><strong>Your first conversation is completely free.</strong></p>
+      </div>
+
+      <div class="cards" style="margin-bottom:2rem;">
+        <div class="card"><strong>Grief & Loss</strong><p>Support through loss, heartbreak, and emotional pain.</p></div>
+        <div class="card"><strong>Marriage & Relationships</strong><p>Guidance to strengthen connection, communication, and trust.</p></div>
+        <div class="card"><strong>Family Support</strong><p>Help navigating conflict, communication, and family challenges.</p></div>
+        <div class="card"><strong>Addiction & Recovery</strong><p>Support for substance use, habits, and life struggles.</p></div>
+      </div>
+
+      <form action="mailto:pastorcoxministries@proton.me" method="post" enctype="text/plain" style="background:#fff; padding:2rem; border-radius:26px;">
+        <label style="font-size:0.9rem; display:block; margin-bottom:0.5rem;">
+          <input type="checkbox" name="anonymous" value="yes" /> Submit anonymously (no name required)
+        </label>
+        <select name="counseling-type" required>
+          <option value="">Choose what you need help with</option>
+          <option>Grief & Loss</option>
+          <option>Marriage / Relationship</option>
+          <option>Family Support</option>
+          <option>Addiction / Recovery</option>
+          <option>Life Struggles / Personal Support</option>
+          <option>Prayer & Spiritual Direction</option>
+        </select>
+
+        <textarea name="details" placeholder="You can share as much or as little as you want. This can be completely confidential."></textarea>
+
+        <button class="btn btn-primary" type="submit">Request Support</button>
+        <p style="margin-top:0.75rem; font-size:0.9rem; color:var(--brown);">✔ Messages are read daily</p>
+      </form>
+
+      <div style="text-align:center; margin-top:2rem;">
+        <p style="font-size:1.1rem; margin-bottom:0.5rem;">Need to talk sooner? You can reach out directly.</p>
+        <p style="font-size:1rem; margin-bottom:1rem;">Text anytime • Response usually within a few hours</p>
+        <a class="btn btn-primary" href="sms:8309298912">Text Ricky Now</a>
+      </div>
+
+      <div style="text-align:center; margin-top:1.5rem; font-size:0.95rem; color:var(--brown);">
+        <p>✔ Private & Confidential</p>
+        <p>✔ No judgment, ever</p>
+        <p>✔ Faith-based, real-world guidance</p>
+      </div>
+
+      <p class="notice"><strong>Important:</strong> These services are faith-based guidance and support, not licensed clinical counseling. If you need medical, psychological, or emergency assistance, please contact a licensed professional or emergency services.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Ministry Services</h2>
+        <p>Faith-filled support for weddings, memorials, family blessings, and sacred life moments.</p>
+      </div>
+
+      <div class="cards">
+        <div style="margin-bottom:1rem; font-weight:bold; color:var(--moss);">Tags: Weddings • Recovery & Support • Family • Prayer</div>
+        <div class="card">
+          <p>“Mr. Rick was my sponsor for years and still keeps in touch. He guided me through many stages of my journey and taught me how to become a sponsor myself. It’s incredibly redeeming to now be able to help others the way he helped me.”</p>
+          <br />
+          <strong>– Mark</strong>
+          <div style="margin-top:0.5rem; font-size:0.9rem; color:var(--sage);">Recovery & Mentorship</div>
+        </div>
+        <div class="card">
+          <h3>Christian Wedding Officiant</h3>
+          <p>Personalized wedding ceremonies, elopements, vow renewals, and covenant-focused services with prayer and scripture available.</p>
+        </div>
+
+        <div class="card">
+          <h3>Memorial & Funeral Ministry</h3>
+          <p>Compassionate Christian services for funerals, graveside ceremonies, celebrations of life, and family prayers.</p>
+        </div>
+
+        <div class="card">
+          <h3>Prayer & Encouragement</h3>
+          <p>One-on-one prayer, scripture-based encouragement, and gentle faith-centered support during difficult or meaningful seasons.</p>
+        </div>
+
+        <div class="card">
+          <h3>Premarital Faith Guidance</h3>
+          <p>Christ-centered conversations for couples preparing for marriage, focused on values, communication, prayer, and commitment.</p>
+        </div>
+
+        <div class="card">
+          <h3>Community & Outreach Ministry</h3>
+          <p>Support for local outreach, women’s gatherings, family programs, prayer groups, nonprofit events, and ministry-centered service.</p>
+        </div>
+
+        <div class="card">
+          <h3>Blessings & Dedications</h3>
+          <p>House blessings, baby dedications, family unity ceremonies, prayers over new beginnings, and custom faith-filled moments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div>
+        <div class="section-title" style="text-align:left; margin-bottom:1rem;">
+          <h2>About Ricky Cox</h2>
+        <div class="photo-card">
+          <img class="feature-photo" src="1000021232.jpg" alt="Pastor Rick standing in a church with stained glass windows" />
+          <div class="photo-caption">Pastor Rick Cox — Faith, guidance, and real support.</div>
+        </div>
+        <div style="text-align:center; margin:1rem 0 1.5rem;">
+          <a href="MinistryGraduateCertificate13Jan2022.png" target="_blank">
+            <img src="MinistryGraduateCertificate13Jan2022.png" alt="Ordained minister certificate for Pastor Rick Cox issued in 2022" style="width:130px; border-radius:12px; box-shadow:0 8px 18px rgba(0,0,0,0.14);" />
+          </a>
+          <p style="font-size:0.85rem; color:var(--brown); margin-top:0.4rem;">Officially Ordained Minister</p>
+        </div>
+        <div style="text-align:center; margin:1.5rem 0;">
+          <a href="MinistryGraduateCertificate13Jan2022.png" target="_blank">
+            <img src="MinistryGraduateCertificate13Jan2022.png" alt="Ordination Certificate Ricky Cox" style="max-width:100%; border-radius:18px; box-shadow:0 12px 30px rgba(0,0,0,0.2);" />
+          </a>
+          <p style="margin-top:0.5rem; font-size:0.95rem; color:var(--brown);">Ordained Minister – January 13, 2022</p>
+          <p style="text-align:center; color:var(--brown); margin-top:0.5rem;">Recognized and authorized to perform weddings, ceremonies, and ministry services.</p>
+          <div style="margin-top:0.75rem; display:inline-block; padding:0.5rem 1rem; background:#f4f7f3; border-radius:20px; font-size:0.9rem; color:#4f6f46; font-weight:600;">
+            ✔ Verified • ✔ Ordained • ✔ Trusted
+          </div>
+          <p style="text-align:center; margin-top:1rem; font-weight:bold; color:var(--dark);">Serving with integrity, compassion, and faith since 2022.</p>
+        </div>
+        <p><strong>Pastor Ricky Cox – Founder of Cox Ministries</strong></p>
+        <p>Pastor Ricky Cox is a man of deep faith, life experience, and genuine compassion. He has walked many roles in life—as a son, husband, father, and grandfather—and brings that lived understanding into every person he serves.</p>
+        <p>Originally from Texas, Ricky spent years traveling across the United States before settling in Missoula, Montana, where he now serves his community through Cox Ministries. Since becoming an ordained minister in 2022, he has dedicated his life to helping others through some of their most meaningful and challenging moments.</p>
+        <p>Ricky has officiated weddings, guided couples in building strong, faith-centered marriages, and supported families through both joyful celebrations and seasons of loss. He has also worked with individuals facing difficult struggles, including substance abuse, offering steady encouragement, accountability, and a path forward rooted in faith.</p>
+        <p>More than 20 years ago, Ricky made a life-changing decision to fully give his life to God. That decision became the foundation of his calling. Since then, he has traveled and guest spoken in various places across the country, sharing messages of hope, restoration, and purpose.</p>
+        <p>Ricky’s journey has been marked by both calling and deep loss. He has endured the passing of the love of his life—the mother of his children—as well as the loss of his first-born son, Thomas. These experiences have shaped a quiet strength in him and a compassion that cannot be taught—only lived.
+
+Through it all, his faith has remained steady, becoming the anchor that now allows him to sit with others in their hardest moments with presence, patience, and genuine understanding. Ricky is the father of three beautiful daughters and a proud grandfather to four grandchildren. Though his family is in Texas, they remain closely connected, and family continues to be at the center of his heart and ministry.
+
+        <div class="photo-card">
+          <img class="feature-photo" src="1000021229.png" alt="Pastor Rick with his daughters by the lake" />
+          <div class="photo-caption">Family is at the heart of his life and ministry.</div>
+        </div></p>
+        <p>Today, Ricky is also writing his first book—sharing his personal journey, including a powerful 40-day fast, and the lessons God has revealed along the way.</p>
+        <p><strong>He meets people where they are, walks with them through life’s valleys and victories, and always points them back to God.</strong></p>
+        <ul class="list">
+          <li>Ordained / certified minister</li>
+          <li>Christian ceremony writing with prayer and scripture options</li>
+          <li>Family-centered, respectful, and peaceful approach</li>
+          <li>Available for simple, traditional, rustic, outdoor, or custom services</li>
+        </ul>
+      </div>
+
+      <div class="about-box">
+        <h3>Why I Serve</h3>
+        <p>There was a moment in my life when everything changed—when I realized I couldn’t do it on my own anymore. In that moment, I fully surrendered my life to God. That decision didn’t just change my path—it gave me purpose.</p>
+        <br />
+        <p>Since then, my heart has been to walk alongside others in their most important moments—whether that’s standing with a couple on their wedding day, sitting with someone in a season of loss, or praying with someone who just needs strength to keep going.</p>
+        <p>I don’t believe in doing ministry from a distance. I believe in being present, being real, and meeting people exactly where they are—with no judgment, just faith, compassion, and truth.</p>
+        <p><strong>If you’re looking for someone to walk with you through one of life’s most meaningful moments, I would be honored to serve you.</strong></p>
+        <div style="text-align:center; margin-top:1rem;">
+          <a class="btn btn-primary" href="#booking">Book Ricky Now</a>
+        </div>
+        <br />
+        <p><strong>Serving:</strong> Missoula, Montana and surrounding areas. Available for couples, families, seniors, community groups, and anyone needing compassionate Christian spiritual support.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-title">
+        <h2>Wedding Packages</h2>
+        <p>Meaningful, faith-centered ceremonies for elopements, weddings, vow renewals, and sacred moments in Missoula, Montana and surrounding areas.</p>
+      </div>
+
+      <div class="photo-card">
+        <img class="feature-photo" src="1000021348.png" alt="Pastor Rick officiating a church wedding ceremony" />
+        <div class="photo-caption">A ceremony that feels as real as your love.</div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Simple & Sacred Ceremony</h3>
+          <div class="price">Starting at $125</div>
+          <p>Perfect for elopements, signing ceremonies, or couples who want something short, sweet, and meaningful.</p>
+          <ul class="list">
+            <li>Short ceremony or signing</li>
+            <li>Simple vows</li>
+            <li>Prayer available upon request</li>
+            <li>Local Missoula-area service</li>
+          </ul>
+          <br />
+          <a class="btn btn-primary" href="#booking">Book This Package</a>
+        </div>
+
+        <div class="card" style="border:2px solid var(--sage);">
+          <h3>Personal Faith Ceremony</h3>
+          <div class="price">Starting at $250</div>
+          <p>A personalized Christian ceremony with prayer, scripture options, and a warm message centered around your love story.</p>
+          <ul class="list">
+            <li>Personalized ceremony wording</li>
+            <li>Prayer and scripture options</li>
+            <li>Pre-ceremony phone call</li>
+            <li>Marriage encouragement and guidance</li>
+          </ul>
+          <br />
+          <a class="btn btn-primary" href="#booking">Book This Package</a>
+        </div>
+
+        <div class="card">
+          <h3>Full-Service Wedding Ceremony</h3>
+          <div class="price">Starting at $350+</div>
+          <p>For couples who want a deeper, more customized ceremony with extra care, planning, and spiritual meaning.</p>
+          <ul class="list">
+            <li>Fully customized ceremony</li>
+            <li>In-depth planning conversation</li>
+            <li>Prayer, scripture, and optional unity ceremony</li>
+            <li>Ongoing support before the wedding day</li>
+          </ul>
+          <br />
+          <a class="btn btn-primary" href="#booking">Book This Package</a>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:2rem;">
+        <h3>Optional Add-Ons</h3>
+        <p>Available upon request: rehearsal attendance, travel outside the Missoula area, rush booking, vow help, keepsake ceremony script, or premarital faith guidance.</p>
+      </div>
+
+      <div class="section-image-grid">
+        <div class="photo-card">
+          <img class="feature-photo" src="1000021347.png" alt="Pastor Rick with wedding couple and wedding party in a chapel" />
+          <div class="photo-caption">Personal, peaceful, and centered on your story.</div>
+        </div>
+        <div class="photo-card">
+          <img class="feature-photo" src="1000021236.png" alt="Pastor Rick officiating an outdoor lakeside wedding" />
+          <div class="photo-caption">From chapels to lakeside ceremonies — your moment, your way.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Photo Gallery</h2>
+        <p>A glimpse into faith, family, weddings, recovery, and real moments of connection.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <a class="gallery-item featured" href="1000021344.png" target="_blank">
+          <img src="1000021344.png" alt="Pastor Rick walking barefoot on the beach in a white outfit" />
+          <div class="gallery-caption">Pastor Rick — Peaceful Guidance</div>
+        </a>
+
+        <a class="gallery-item" href="1000021232.jpg" target="_blank">
+          <img src="1000021232.jpg" alt="Pastor Rick in church setting in suit" />
+          <div class="gallery-caption">Faith & Leadership</div>
+        </a>
+
+        <a class="gallery-item" href="1000021229.png" target="_blank">
+          <img src="1000021229.png" alt="Pastor Rick with his daughters by the lake" />
+          <div class="gallery-caption">Family & Faith</div>
+        </a>
+
+        <a class="gallery-item" href="1000021223.png" target="_blank">
+          <img src="1000021223.png" alt="Pastor Rick in a couples guidance setting" />
+          <div class="gallery-caption">Counseling & Guidance</div>
+        </a>
+
+        <a class="gallery-item" href="1000021346.png" target="_blank">
+          <img src="1000021346.png" alt="Pastor Rick sitting on beach in black and white" />
+          <div class="gallery-caption">Recovery & Reflection</div>
+        </a>
+
+        <a class="gallery-item" href="1000021230.jpg" target="_blank">
+          <img src="1000021230.jpg" alt="Pastor Rick speaking with people around a campfire" />
+          <div class="gallery-caption">Community & Conversation</div>
+        </a>
+
+        <a class="gallery-item" href="1000021348.png" target="_blank">
+          <img src="1000021348.png" alt="Pastor Rick officiating a wedding in a church" />
+          <div class="gallery-caption">Wedding Ceremony</div>
+        </a>
+
+        <a class="gallery-item" href="1000021236.png" target="_blank">
+          <img src="1000021236.png" alt="Outdoor wedding ceremony by the lake" />
+          <div class="gallery-caption">Outdoor Wedding</div>
+        </a>
+
+        <a class="gallery-item" href="1000021235.png" target="_blank">
+          <img src="1000021235.png" alt="Pastor Rick with wedding party outdoors" />
+          <div class="gallery-caption">Wedding Party</div>
+        </a>
+      </div>
+
+      <p class="photo-note">Every moment. Every story. His glory.</p>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Kind Words</h2>
+        <p>What people experience when working with Cox Ministries.</p>
+      </div>
+
+      <div class="card featured-testimonial" style="padding:2rem; border-left:8px solid var(--sage); margin-bottom:2rem;">
+        <p style="font-size:1.3rem; font-weight:bold;">“Pastor Rick helped save my life during one of the darkest times I’ve ever faced.”</p>
+        <p>After losing the love of my life—my mother—I was completely broken. Pastor Rick met me with compassion, strength, and a sense of humor that made healing feel possible again.</p>
+        <p>He’s incredibly easy to talk to and never made me feel judged or uncomfortable. Instead of a formal setting, he would even meet me at the park—where I felt safe enough to truly open up. That personal care meant everything.</p>
+        <p>What makes him truly different is that his support doesn’t stop after a conversation. He still checks in, and that kind of genuine care is rare.</p>
+        <p>If you’re looking for someone who is real, understanding, and truly invested in your healing, I cannot recommend Pastor Rick enough.</p>
+        <br />
+        <strong>– D.M.</strong>
+        <div style="margin-top:0.5rem; font-size:0.9rem; color:var(--sage);">Recovery & Support</div>
+        <div style="text-align:center; margin-top:1rem;">
+          <a class="btn btn-primary" href="sms:8309298912">Text Ricky Now</a>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div style="margin-bottom:1rem; font-weight:bold; color:var(--moss);">Tags: Weddings • Recovery & Support • Family • Prayer</div>
+        <div class="card">
+          <p style="font-size:1.15rem; font-weight:bold;">“We found more than an officiant—we found a lifelong friend.”</p>
+          <p>Just 7 days before our wedding, our original officiant had an accident and we were left scrambling. When we reached out to Pastor Rick, he immediately stepped in with compassion and flexibility. He spoke with my fiancé and me the very same day and put us completely at ease.</p>
+          <p>What we experienced went far beyond a ceremony. Pastor Rick brought humor, sincerity, and a deep understanding of both the Word and people. Even though he had just met us, he delivered a ceremony so meaningful that it had both my husband and me in tears.</p>
+          <p>Since our wedding day, he hasn’t just disappeared—he continues to check in on us and even gifted us something special filled with scripture. That kind of care is rare.</p>
+          <p>I can officially say we gained more than just each other—we gained Pastor Rick too.</p>
+          <br />
+          <strong>– S. Scott</strong>
+          <div style="margin-top:0.5rem; font-size:0.9rem; color:var(--sage);">Wedding Ceremony</div>
+        </div>
+
+        <div class="card">
+          <p>“During one of the hardest times in our family, Ricky showed up with compassion and calm. His words brought peace.”</p>
+          <br />
+          <strong>– Family Support</strong>
+        </div>
+
+        <div class="card">
+          <p>“You can tell Ricky truly cares. He listens, he prays, and he doesn’t judge.”</p>
+          <br />
+          <strong>– Community Member</strong>
+        </div>
+      </div>
+
+      <p class="notice">More stories will be added as Cox Ministries continues to serve couples, families, and individuals throughout the community.</p>
+    </div>
+  </section>
+
+  <div style="text-align:center; margin:2rem 0;">
+        <a href="MinistryGraduateCertificate13Jan2022.png" target="_blank">
+          <img src="MinistryGraduateCertificate13Jan2022.png" alt="Ordination Certificate" style="max-width:220px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.15);" />
+        </a>
+        <p style="font-size:0.9rem; color:var(--brown);">Verified Ordained Minister</p>
+        <div style="margin-top:0.75rem; display:inline-block; padding:0.5rem 1rem; background:#f4f7f3; border-radius:20px; font-size:0.9rem; color:#4f6f46; font-weight:600;">
+          ✔ Verified • ✔ Ordained • ✔ Trusted
+        </div>
+      </div>
+
+  <section id="booking">
+    <div class="container">
+      <div class="section-title">
+        <h2>Book Now</h2>
+        <p>Serving Missoula, Montana and nearby communities. Choose your service, preferred date, and the best way to reach you.</p>
+      </div>
+
+      <form action="mailto:pastorcoxministries@proton.me" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="tel" name="phone" placeholder="Phone number" required />
+        <input type="email" name="email" placeholder="Email address" />
+        <select name="service" required>
+          <option value="">Choose a service</option>
+          <option>Christian wedding officiant</option>
+          <option>Elopement / signing ceremony</option>
+          <option>Memorial or funeral service</option>
+          <option>Prayer / spiritual support</option>
+          <option>Premarital faith guidance</option>
+          <option>Community outreach / ministry event</option>
+          <option>House blessing / dedication</option>
+          <option>Other</option>
+        </select>
+        <input type="date" name="preferred-date" />
+        <input type="time" name="preferred-time" />
+        <input type="text" name="location" placeholder="Ceremony / service location in or near Missoula" />
+        <textarea name="message" placeholder="Tell me what you need and whether you prefer a simple, traditional, outdoor, or custom service"></textarea>
+        <button class="btn btn-primary" type="submit">Send Booking Request</button>
+      </form>
+
+      <p style="text-align:center; margin-top:1.5rem; font-size:1.1rem;">
+        For the fastest response, text <strong>830-929-8912</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section class="pricing" id="payments">
+    <div class="container">
+      <div class="section-title">
+        <h2>Secure Your Date</h2>
+        <p>Submit your booking details, choose your payment type, and complete your deposit, balance, or donation securely through PayPal.</p>
+      </div>
+
+      <form action="mailto:pastorcoxministries@proton.me" method="post" enctype="text/plain" style="background:#fff; padding:2rem; border-radius:26px; box-shadow:0 12px 30px rgba(47, 36, 29, 0.09);">
+        <input type="text" name="client-name" placeholder="Your full name" required />
+        <input type="tel" name="client-phone" placeholder="Phone number" required />
+        <input type="email" name="client-email" placeholder="Email address" />
+
+        <select name="service-requested" required>
+          <option value="">Choose your service</option>
+          <option>Christian wedding officiant</option>
+          <option>Elopement / signing ceremony</option>
+          <option>Memorial or funeral service</option>
+          <option>Prayer / spiritual support</option>
+          <option>Premarital faith guidance</option>
+          <option>Community outreach / ministry event</option>
+          <option>House blessing / dedication</option>
+          <option>Donation / ministry support</option>
+        </select>
+
+        <select name="payment-type" required>
+          <option value="">Choose payment type</option>
+          <option>$50 Deposit to secure date</option>
+          <option>Full balance payment</option>
+          <option>Donation / ministry support</option>
+          <option>Custom amount</option>
+        </select>
+
+        <input type="date" name="service-date" />
+        <input type="time" name="service-time" />
+        <input type="text" name="service-location" placeholder="Service location in or near Missoula, Montana" />
+        <textarea name="service-notes" placeholder="Tell me about the ceremony, service, family needs, scripture preferences, or special details"></textarea>
+
+        <button class="btn btn-primary" type="submit">Send Booking Details</button>
+      </form>
+
+      <div class="cards" style="margin-top:2rem;">
+        <div class="card">
+          <h3>Pay Deposit</h3>
+          <div class="price">$50+</div>
+          <p>Use this to reserve your requested ceremony or ministry service date.</p>
+          <br />
+          <a class="btn btn-primary" href="https://www.paypal.com/paypalme/8309298912" target="_blank">Pay Deposit</a>
+        </div>
+
+        <div class="card">
+          <h3>Pay Full Balance</h3>
+          <div class="price">Custom Amount</div>
+          <p>Use this for full wedding, memorial, outreach, or ministry service payments.</p>
+          <br />
+          <a class="btn btn-primary" href="https://www.paypal.com/paypalme/8309298912" target="_blank">Pay Balance</a>
+        </div>
+
+        <div class="card">
+          <h3>Donation / Ministry Support</h3>
+          <div class="price">Any Amount</div>
+          <p>Support prayer, outreach, and faith-based ministry services in the community.</p>
+          <br />
+          <a class="btn btn-primary" href="https://www.paypal.com/paypalme/8309298912" target="_blank">Give / Donate</a>
+        </div>
+      </div>
+
+      <p class="notice"><strong>Booking Policy:</strong> A deposit helps reserve your requested date. Your date is confirmed once booking details and payment are received. Payments are processed securely through PayPal. Please include your name and service date in the PayPal note when possible.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Request a Service</h2>
+        <p>Share what you need, your preferred date, and the best way to reach you. Texting is the fastest way to connect.</p>
+      </div>
+
+      <form action="mailto:pastorcoxministries@proton.me" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <input type="tel" name="phone" placeholder="Phone number (830-929-8912)" />
+        <select name="service" required>
+          <option value="">Choose a service</option>
+          <option>Wedding officiant</option>
+          <option>Elopement / signing ceremony</option>
+          <option>Memorial or funeral service</option>
+          <option>Prayer / spiritual support</option>
+          <option>Premarital faith coaching</option>
+          <option>Community outreach / event</option>
+          <option>Other</option>
+        </select>
+        <input type="text" name="date" placeholder="Requested date / location in or near Missoula, Montana" />
+        <textarea name="message" placeholder="Tell me a little about what you need"></textarea>
+        <button class="btn btn-primary" type="submit">Send Request</button>
+      </form>
+
+      <p style="text-align:center; margin-top:1.5rem; font-size:1.1rem;">
+        📞 Text for faster response: <strong>830-929-8912</strong><br />Serving Missoula, Montana & surrounding areas
+      </p>
+
+      <p class="notice">Note: Prayer, ministry support, and faith-based guidance are not a substitute for licensed counseling, legal advice, medical care, or emergency services.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Cox Ministries • Ricky Cox. Faith, grace, and peace for life’s sacred moments.</p>
+  </footer>
+</body>
+</html>
